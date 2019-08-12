@@ -1,5 +1,5 @@
 class Block
-    def initialize(x: 0, y: 0, size: 10, rgba: [1, 1, 1, 1])
+    def initialize(x: 0, y: 0, size: 40, rgba: [1, 1, 1, 1])
         @x = x
         @y = y
         @size = size

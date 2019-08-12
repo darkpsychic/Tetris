@@ -9,6 +9,6 @@ module Constant
 
     #Block Properties
     BlockSize = 40
-    NumOfBlocksX = ((Height + LineSize) / (BlockSize + LineSize)).round
-    NumOfBlocksY = ((Width + LineSize) / (BlockSize + LineSize)).round
+    NumOfBlocksX = ((Width + LineSize) / (BlockSize + LineSize)).round
+    NumOfBlocksY = ((Height + LineSize) / (BlockSize + LineSize)).round
 end
