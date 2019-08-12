@@ -1,7 +1,7 @@
 require "Block"
 require_relative "Constant/Constant"
 
-class Shapes 
+class Shape
     #constructor: create a shape with the top-left block is at position (x, y)
     def initialize(x: 0, y: 0) do 
         @block_arr = Array.new(4, Block.new(0, 0, Constant::BlockSize, color: [0.5, 0.5, 0.5, 0.5]))
