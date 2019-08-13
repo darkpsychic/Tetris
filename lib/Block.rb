@@ -22,6 +22,11 @@ class Block
         @rgba
     end
 
+    def set(x, y)
+        @x = x 
+        @y = y
+    end
+
     def setX(x)
         @x = x 
     end 
