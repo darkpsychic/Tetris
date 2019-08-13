@@ -1,7 +1,9 @@
 require 'ruby2d'
+require_relative 'lib/Tee'
 require_relative 'lib/Block'
 require_relative 'lib/Constant/Constant'
 require_relative 'lib/Board'
+
 
 set width: Constant::Width, height: Constant::Height
 
@@ -14,5 +16,7 @@ end
 for i in 1..Constant::NumOfBlocksX do
     Line.new(x1: i*Constant::BlockSize, y1: 0, x2: i*Constant::BlockSize, y2: Constant::Height, width: Constant::LineSize, color: Constant::LineColor)
 end
+
+t = Tee.new(x: 0, y: 0)
 
 show
