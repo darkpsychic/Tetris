@@ -4,7 +4,10 @@ require_relative "Constant/Constant"
 class Shape
     #constructor: create a shape with the top-left block is at position (x, y)
     def initialize(x: 0, y: 0)
-        @block_arr = Array.new(4, Block.new(x: 0, y: 0, size: Constant::BlockSize, rgba: [0.5, 0.5, 0.5, 0.5]))
+        @block_arr = [Block.new(x: 0, y: 0, size: Constant::BlockSize, rgba: [0.5, 0.5, 0.5, 0.5]), 
+                      Block.new(x: 0, y: 0, size: Constant::BlockSize, rgba: [0.5, 0.5, 0.5, 0.5]),
+                      Block.new(x: 0, y: 0, size: Constant::BlockSize, rgba: [0.5, 0.5, 0.5, 0.5]),
+                      Block.new(x: 0, y: 0, size: Constant::BlockSize, rgba: [0.5, 0.5, 0.5, 0.5])]
         @x = x
         @y = y
     end
