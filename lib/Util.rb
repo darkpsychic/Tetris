@@ -4,16 +4,16 @@ require_relative 'Constant/Constant'
 module Util
     extend self
 
-    def input
-        Window.on :key_up do |event|
-            if event.key==:up or event.key==:left or event.key==:right
-                return event.key
+    def update(board, cur_shape)
+        Window.on :key_down do |event|
+            if event.key=="up"
+                cur_shape.rotate
+            elsif event.key=="left"
+                cur_shape.move_left
+            elsif event.key=="right"
+                cur_shape.move_right
             end
         end
-    end
-
-    def update(board, input)
-        
     end
 
     def draw_lines

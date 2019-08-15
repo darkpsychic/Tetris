@@ -14,8 +14,7 @@ class Board
     end
 
     def update
-        inp = Util.input
-        Util.update(@board, inp)
+        Util.update(@board, @cur_shape)
         Util.draw(@board)
     end
 
@@ -26,7 +25,7 @@ class Board
         @cur_shape = 0 #placeholder value
         @cur_shape_symbol = 0
 
-        midX = Constant::NumOfBlocksX/2
+        midX = Constant::NumOfBlocksX/2 - 1
         midY = 0
         case random_number
             when 1
