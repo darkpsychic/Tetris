@@ -15,10 +15,6 @@ b = Board.new
 
 t = b.drop
 tick = 0
-a1 = Square.new(color: 'random')
-a2 = Square.new(color: 'random')
-a3 = Square.new(color: 'random')
-a4 = Square.new(color: 'random')
 update do
     b.update
 end

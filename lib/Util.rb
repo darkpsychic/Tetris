@@ -24,10 +24,8 @@ module Util
             for c in 0..Constant::NumOfBlocksX-1 do
                 cur_elem = board[r][c]
 
-                cur_block = Square.new(x: c* Constant::BlockSize, y: r*Constant::BlockSize, size: Constant::BlockSize)
+                cur_block = Square.new(x: r*Constant::BlockSize, y: c*Constant::BlockSize, size: Constant::BlockSize, z: -1)
                 case cur_elem
-                    when 0
-                        cur_block.color = 'black'
                     when :Box 
                         cur_block.color = Constant::BoxColor
                     when :Jed
@@ -40,6 +38,8 @@ module Util
                         cur_block.color = Constant::TeeColor
                     when :Zed
                         cur_block.color = Constant::ZedColor
+                    else
+                        cur_block.color = [0, 0, 0, 0]
                 end
             end
         end
