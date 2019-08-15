@@ -4,10 +4,10 @@ require_relative "../Constant/Constant"
 class Shape
     #constructor: create a shape with the top-left block is at position (x, y)
     def initialize(x: 0, y: 0)
-        @block_arr = [Block.new(x: 0, y: 0, size: Constant::BlockSize, rgba: [0.5, 0.5, 0.5, 0.5]), 
-                      Block.new(x: 0, y: 0, size: Constant::BlockSize, rgba: [0.5, 0.5, 0.5, 0.5]),
-                      Block.new(x: 0, y: 0, size: Constant::BlockSize, rgba: [0.5, 0.5, 0.5, 0.5]),
-                      Block.new(x: 0, y: 0, size: Constant::BlockSize, rgba: [0.5, 0.5, 0.5, 0.5])]
+        @block_arr = [Block.new(x: 0, y: 0, size: Constant::BlockSize), 
+                      Block.new(x: 0, y: 0, size: Constant::BlockSize),
+                      Block.new(x: 0, y: 0, size: Constant::BlockSize),
+                      Block.new(x: 0, y: 0, size: Constant::BlockSize)]
         @x = x
         @y = y
     end
@@ -32,5 +32,9 @@ class Shape
 
     def get_shape()
         @block_arr
+    end
+
+    def get_ymbol()
+        @block_arr[0].getBlockSymbol
     end
 end

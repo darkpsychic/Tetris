@@ -10,6 +10,10 @@ class Zed < Shape
 
         super
 
+        @block_arr.each do |block| 
+            block.setBlockSymbol(:Zed)
+        end
+
         @rotation_state = 0  #stores the current state of rotation 
         @num_of_rotations = 2 #number of possible rotations for the piece
 

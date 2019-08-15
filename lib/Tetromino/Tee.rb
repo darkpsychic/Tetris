@@ -10,6 +10,10 @@ class Tee < Shape
 
         super
 
+        @block_arr.each do |block| 
+            block.setBlockSymbol(:Tee)
+        end
+
         @rotation_state = 0  #stores the current state of rotation 
         @num_of_rotations = 3 #number of possible rotations for the piece
 
