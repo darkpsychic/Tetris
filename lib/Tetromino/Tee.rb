@@ -20,9 +20,9 @@ class Tee < Shape
         if @rotation_state == 0 
             rotate_top
         elsif @rotation_state == 1
-            rotate_bottom
-        elsif @rotation_state == 2
             rotate_left
+        elsif @rotation_state == 2
+            rotate_bottom
         end
 
         @rotation_state += 1

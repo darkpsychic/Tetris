@@ -1,5 +1,5 @@
 require 'ruby2d'
-require_relative 'lib/Tetromino/Jed'
+require_relative 'lib/Tetromino/Zed'
 require_relative 'lib/Block'
 require_relative 'lib/Constant/Constant'
 require_relative 'lib/Board'
@@ -17,14 +17,12 @@ for i in 1..Constant::NumOfBlocksX do
     Line.new(x1: i*Constant::BlockSize, y1: 0, x2: i*Constant::BlockSize, y2: Constant::Height, width: Constant::LineSize, color: Constant::LineColor)
 end
 
-t = Jed.new(x: 3, y: 3)
-#t.rotate
-#t.rotate
+t = Zed.new(x: 3, y: 3)
 tick = 0
-a1 = Square.new
-a2 = Square.new
-a3 = Square.new
-a4 = Square.new
+a1 = Square.new(color: 'random')
+a2 = Square.new(color: 'random')
+a3 = Square.new(color: 'random')
+a4 = Square.new(color: 'random')
 update do
     if tick%Window.fps==0
         on :key_up do |event|

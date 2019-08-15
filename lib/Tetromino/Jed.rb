@@ -17,6 +17,8 @@ class Jed < Shape
     end 
 
     def rotate
+        @rotation_state %= @num_of_rotations
+        
         if @rotation_state == 0 
             rotate_top
         elsif @rotation_state == 1
@@ -26,7 +28,6 @@ class Jed < Shape
         end
 
         @rotation_state += 1
-        @rotation_state %= @num_of_rotations
     end
 
     private 
