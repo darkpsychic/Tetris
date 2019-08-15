@@ -1,3 +1,4 @@
+require_relative 'Util'
 require_relative "Constant/Constant"
 require_relative "Tetromino/Tetromino"
 
@@ -8,7 +9,12 @@ class Board
         @board = Array.new(Constant::NumOfBlocksY) {Array.new(Constant::NumOfBlocksX, 0)}
 
         @game_lost = false
+        @should_fall = true
         @score = 0
+    end
+
+    def update
+        Util.draw(@board)
     end
 
     # generates a random block at the top of the screen
@@ -21,24 +27,24 @@ class Board
         midX = Constant::NumOfBlocksX/2
         midY = 0
         case random_number
-        when 1
-            @cur_shape_symbol = :Box
-            @cur_shape = Box.new(x: midX, y: midY)
-        when 2
-            @cur_shape_symbol = :Jed
-            @cur_shape = Jed.new(x: midX, y: midY)
-        when 3
-            @cur_shape_symbol = :Led
-            @cur_shape = Led.new(x: midX, y: midY)
-        when 4
-            @cur_shape_symbol = :Stick
-            @cur_shape = Stick.new(x: midX, y: midY)
-        when 5
-            @cur_shape_symbol = :Tee
-            @cur_shape = Tee.new(x: midX, y: midY)
-        when 6
-            @cur_shape_symbol = :Zed
-            @cur_shape = Zed.new(x: midX, y: midY)
+            when 1
+                @cur_shape_symbol = :Box
+                @cur_shape = Box.new(x: midX, y: midY)
+            when 2
+                @cur_shape_symbol = :Jed
+                @cur_shape = Jed.new(x: midX, y: midY)
+            when 3
+                @cur_shape_symbol = :Led
+                @cur_shape = Led.new(x: midX, y: midY)
+            when 4
+                @cur_shape_symbol = :Stick
+                @cur_shape = Stick.new(x: midX, y: midY)
+            when 5
+                @cur_shape_symbol = :Tee
+                @cur_shape = Tee.new(x: midX, y: midY)
+            when 6
+                @cur_shape_symbol = :Zed
+                @cur_shape = Zed.new(x: midX, y: midY)
         end
 
         puts @cur_shape_symbol
@@ -77,6 +83,6 @@ class Board
     def add_shape(shape, shape_symbol)
         shape.get_shape.each do |block|
             @board[block.getX][block.getY] = shape_symbol
-        end
+        end 
     end
 end
