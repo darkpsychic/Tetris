@@ -19,7 +19,7 @@ class Board
         @cur_shape_symbol = 0
 
         midX = Constant::NumOfBlocksX/2
-        midY = 1
+        midY = 0
         case random_number
         when 1
             @cur_shape_symbol = :Box
@@ -44,7 +44,7 @@ class Board
         puts @cur_shape_symbol
 
         if !gameover?
-            add_shape(@cur_shape)
+            add_shape(@cur_shape, @cur_shape_symbol)
         else
             @game_lost = true
         end
@@ -54,10 +54,11 @@ class Board
 
     # checks for collision of the given shape with blocks on the board
     def colliding?(shape)
-        shape.get_shape.each { |cur_block|
+        shape.get_shape.each do |cur_block|
             if @board[cur_block.getY][cur_block.getX] != 0
                 return true
-        }
+            end
+        end
 
         return false
     end
@@ -68,5 +69,14 @@ class Board
             return true
         else
             return false
+        end
+    end
+
+    private 
+
+    def add_shape(shape, shape_symbol)
+        shape.get_shape.each do |block|
+            @board[block.getX][block.getY] = shape_symbol
+        end
     end
 end
