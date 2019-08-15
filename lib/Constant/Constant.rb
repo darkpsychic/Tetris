@@ -14,10 +14,10 @@ module Constant
 
     # the array has the following elements
     # color_id, color
-    BoxColor = [1, [0, 0, 1, 0.5]]        #Blue
-    JedColor = [2, [0, 0.6, 0.4, 0.5]]    #Jade
-    LedColor = [3, [0.9, 0.9, 1, 0.5]]    #Lavender
-    StickColor = [4, [0, 0.1, 0.4, 0.5]]  #Sapphire
-    TeeColor = [5, [0, 0.5, 0.5, 0.5]]    #Teal
-    ZedColor = [6, [0.8, 0.7, 0.1, 0.5]]  #Zutem
+    BoxColor = [:Box, [0, 0, 1, 0.5]]          #Blue
+    JedColor = [:Jed, [0, 0.6, 0.4, 0.5]]      #Jade
+    LedColor = [:Led, [0.9, 0.9, 1, 0.5]]      #Lavender
+    StickColor = [:Stick, [0, 0.1, 0.4, 0.5]]  #Sapphire
+    TeeColor = [:Tee, [0, 0.5, 0.5, 0.5]]      #Teal
+    ZedColor = [:Zed, [0.8, 0.7, 0.1, 0.5]]    #Zutem
 end
