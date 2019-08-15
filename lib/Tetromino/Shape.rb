@@ -1,5 +1,5 @@
-require_relative "Block"
-require_relative "Constant/Constant"
+require_relative "../Block"
+require_relative "../Constant/Constant"
 
 class Shape
     #constructor: create a shape with the top-left block is at position (x, y)

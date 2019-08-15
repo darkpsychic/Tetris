@@ -1,8 +1,8 @@
-require_relative "Block"
+require_relative "../Block"
 require_relative "Shape"
-require_relative "Constant/Constant"
+require_relative "../Constant/Constant"
 
-class Tee < Shape
+class Jed < Shape
     def initialize(x: 0, y: 0) 
         if x>Constant::NumOfBlocksX-3 or x<0 or y>Constant::NumOfBlocksY-2 or y<0
             raise "Invalid positions"
@@ -32,23 +32,23 @@ class Tee < Shape
     private 
 
     def rotate_top 
-        @block_arr[0].set(@x, @y)
-        @block_arr[1].set(@x+1, @y)
-        @block_arr[2].set(@x+2, @y)
-        @block_arr[3].set(@x+1, @y+1)
+        @block_arr[0].set(@x+2, @y)
+        @block_arr[1].set(@x, @y+1)
+        @block_arr[2].set(@x+1, @y+1)
+        @block_arr[3].set(@x+2, @y+1)
     end
 
     def rotate_bottom
-        @block_arr[0].set(@x, @y+1)
-        @block_arr[1].set(@x+1, @y+1)
-        @block_arr[2].set(@x+2, @y+1)
-        @block_arr[3].set(@x+1, @y)
+        @block_arr[0].set(@x, @y)
+        @block_arr[1].set(@x+1, @y)
+        @block_arr[2].set(@x+2, @y)
+        @block_arr[3].set(@x, @y+1)
     end
 
     def rotate_left
-        @block_arr[0].set(@x+1, @y+1)
-        @block_arr[1].set(@x+1, @y)
-        @block_arr[2].set(@x+1, @y-1)
-        @block_arr[3].set(@x+2, @y)
+        @block_arr[0].set(@x, @y)
+        @block_arr[1].set(@x-1, @y)
+        @block_arr[2].set(@x, @y+1)
+        @block_arr[3].set(@x, @y+2)
     end
 end 

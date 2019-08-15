@@ -1,6 +1,6 @@
-require_relative "Block"
+require_relative "../Block"
 require_relative "Shape"
-require_relative "Constant/Constant"
+require_relative "../Constant/Constant"
 
 class Box < Shape
     def initialize(x: 0, y: 0) 
