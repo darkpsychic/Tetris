@@ -3,6 +3,19 @@ require_relative 'Constant/Constant'
 
 module Util
     extend self
+
+    def input
+        Window.on :key_up do |event|
+            if event.key==:up or event.key==:left or event.key==:right
+                return event.key
+            end
+        end
+    end
+
+    def update(board, input)
+        
+    end
+
     def draw_lines
         #draw horizontal lines
         for i in 1..Constant::NumOfBlocksY do
@@ -20,8 +33,8 @@ module Util
 
         draw_lines
 
-        for r in 0..Constant::NumOfBlocksY-1 do
-            for c in 0..Constant::NumOfBlocksX-1 do
+        for r in 0..Constant::NumOfBlocksX-1 do
+            for c in 0..Constant::NumOfBlocksY-1 do
                 cur_elem = board[r][c]
 
                 cur_block = Square.new(x: r*Constant::BlockSize, y: c*Constant::BlockSize, size: Constant::BlockSize, z: -1)
@@ -39,7 +52,7 @@ module Util
                     when :Zed
                         cur_block.color = Constant::ZedColor
                     else
-                        cur_block.color = [0, 0, 0, 0]
+                        cur_block.color = [0, 0, 0, 1]
                 end
             end
         end
