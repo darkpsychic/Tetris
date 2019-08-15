@@ -21,30 +21,33 @@ t = Jed.new(x: 3, y: 3)
 #t.rotate
 #t.rotate
 tick = 0
-a1 = 0
-a2 = 0
-a3 = 0
-a4 = 0
+a1 = Square.new
+a2 = Square.new
+a3 = Square.new
+a4 = Square.new
 update do
-    if tick%60==0
+    if tick%Window.fps==0
         on :key_up do |event|
             if event.key == 'return' 
-                puts "RETURN"
-                a1 = Square.new(x: (t.get_shape[0].getX - 1)*Constant::BlockSize, y: (t.get_shape[0].getY - 1)*Constant::BlockSize, size: Constant::BlockSize, z:-1)
-                a2 = Square.new(x: (t.get_shape[1].getX - 1)*Constant::BlockSize, y: (t.get_shape[1].getY - 1)*Constant::BlockSize, size: Constant::BlockSize, z:-1)
-                a3 = Square.new(x: (t.get_shape[2].getX - 1)*Constant::BlockSize, y: (t.get_shape[2].getY - 1)*Constant::BlockSize, size: Constant::BlockSize, z:-1)
-                a4 = Square.new(x: (t.get_shape[3].getX - 1)*Constant::BlockSize, y: (t.get_shape[3].getY - 1)*Constant::BlockSize, size: Constant::BlockSize, z:-1)
-            end 
-
-            if event.key == 'a'
-                puts a1
-                a1.remove
-                a2.remove
-                a3.remove
-                a4.remove
-                clear
                 t.rotate
-            end
+                puts "RETURN"
+                if a1 != 0
+                    a1.remove
+                    a1 = Square.new(x: (t.get_shape[0].getX - 1)*Constant::BlockSize, y: (t.get_shape[0].getY - 1)*Constant::BlockSize, size: Constant::BlockSize, z:-1)
+                end
+                if a2 != 0   
+                    a2.remove
+                    a2 = Square.new(x: (t.get_shape[1].getX - 1)*Constant::BlockSize, y: (t.get_shape[1].getY - 1)*Constant::BlockSize, size: Constant::BlockSize, z:-1)
+                end
+                if a3 != 0
+                    a3.remove
+                    a3 = Square.new(x: (t.get_shape[2].getX - 1)*Constant::BlockSize, y: (t.get_shape[2].getY - 1)*Constant::BlockSize, size: Constant::BlockSize, z:-1)
+                end
+                if a4 != 0
+                    a4.remove
+                    a4 = Square.new(x: (t.get_shape[3].getX - 1)*Constant::BlockSize, y: (t.get_shape[3].getY - 1)*Constant::BlockSize, size: Constant::BlockSize, z:-1)
+                end
+            end 
         end
     end
 

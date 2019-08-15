@@ -39,16 +39,16 @@ class Jed < Shape
     end
 
     def rotate_bottom
-        @block_arr[0].set(@x, @y)
-        @block_arr[1].set(@x+1, @y)
-        @block_arr[2].set(@x+2, @y)
-        @block_arr[3].set(@x, @y+1)
+        @block_arr[0].set(@x, @y+1)
+        @block_arr[1].set(@x+1, @y+1)
+        @block_arr[2].set(@x+2, @y+1)
+        @block_arr[3].set(@x, @y+2)
     end
 
     def rotate_left
-        @block_arr[0].set(@x, @y)
-        @block_arr[1].set(@x-1, @y)
-        @block_arr[2].set(@x, @y+1)
-        @block_arr[3].set(@x, @y+2)
+        @block_arr[0].set(@x+1, @y)
+        @block_arr[1].set(@x+2, @y)
+        @block_arr[2].set(@x+2, @y+1)
+        @block_arr[3].set(@x+2, @y+2)
     end
 end 
