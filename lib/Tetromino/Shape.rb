@@ -13,25 +13,19 @@ class Shape
     end
 
     def move_left() 
-        if @block_arr.getX() > 0
+        @block_arr.each do |block|
             @x -= 1
         end
     end
 
     def move_right() 
-        if @block_arr.getX() < Constant::NumOfBlocksX - 1
+        @block_arr.each do |block|
             @x += 1
-        end
-    end
-    
-    def move_up() 
-        if @block_arr.getY() > 0 
-            @y -= 1
         end
     end
 
     def move_down() 
-        if @block_arr.getY() < Constant::NumOfBlocksY - 1
+        @block_arr.each do |block|
             @y += 1
         end
     end

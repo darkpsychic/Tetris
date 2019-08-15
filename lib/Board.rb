@@ -79,8 +79,6 @@ class Board
         end
     end
 
-    private 
-
     def add_shape(shape, shape_symbol)
         shape.get_shape.each do |block|
             @board[block.getX][block.getY] = shape_symbol

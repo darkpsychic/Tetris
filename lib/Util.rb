@@ -8,10 +8,13 @@ module Util
         Window.on :key_down do |event|
             if event.key=="up"
                 cur_shape.rotate
+                board.add_shape(cur_shape)
             elsif event.key=="left"
                 cur_shape.move_left
+                board.add_shape(cur_shape)
             elsif event.key=="right"
                 cur_shape.move_right
+                board.add_shape(cur_shape)
             end
         end
     end
