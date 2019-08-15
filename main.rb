@@ -9,14 +9,12 @@ require_relative 'lib/Board'
 
 set width: Constant::Width, height: Constant::Height
 
-Util::draw_lines
+board = Board.new
 
-b = Board.new
-
-t = b.drop
+t = board.drop
 tick = 0
 update do
-    b.update
+    board.update
 end
 
 show

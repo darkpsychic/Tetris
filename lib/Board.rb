@@ -14,6 +14,8 @@ class Board
     end
 
     def update
+        inp = Util.input
+        Util.update(@board, inp)
         Util.draw(@board)
     end
 
