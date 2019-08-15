@@ -1,9 +1,9 @@
 class Block
-    def initialize(x: 0, y: 0, size: 40, rgba: [1, 1, 1, 1])
+    def initialize(x: 0, y: 0, size: 40, block_symbol: :none)
         @x = x
         @y = y
         @size = size
-        @rgba = rgba
+        @block_symbol = block_symbol
     end
 
     def getX()
@@ -18,8 +18,8 @@ class Block
         @size
     end
 
-    def getColor()
-        @rgba
+    def getBlockSymbol()
+        @block_symbol
     end
 
     def set(x, y)
@@ -35,7 +35,7 @@ class Block
         @y = y 
     end 
 
-    def setColor(rgba: [1, 1, 1, 1]) 
-        @rgba = rgba 
+    def setBlockSymbol(block_symbol: :none) 
+        @block_symbol = block_symbol 
     end
 end
