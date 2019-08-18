@@ -5,7 +5,7 @@ module Constant
 
     #Line Properties
     LineSize = 1.0
-    LineColor = [0.6, 0.4, 0.6, 1] 
+    LineColor = [1, 0, 1, 1] 
 
     #Block Properties
     BlockSize = 40
