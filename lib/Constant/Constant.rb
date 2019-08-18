@@ -5,7 +5,7 @@ module Constant
 
     #Line Properties
     LineSize = 1.0
-    LineColor = [0, 1, 0, 0.5] #green
+    LineColor = [1, 1, 0, 0.5] #green
 
     #Block Properties
     BlockSize = 40
@@ -16,8 +16,8 @@ module Constant
     JedColor =  [0, 0.6, 0.4, 1]  #Jade
     LedColor =  [0.9, 0.9, 1, 1]  #Lavender
     StickColor = [0, 0.1, 0.4, 1] #Sapphire
-    TeeColor =  [0, 0.5, 0.5, 1]  #Teal
-    ZedColor = [0.8, 0.7, 0.1, 1] #Zutem
+    TeeColor =  [0, 1, 0, 1]      #Green
+    ZedColor = [1, 0, 0, 1]       #Red
 
     FPS = 60
 end

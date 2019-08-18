@@ -46,7 +46,6 @@ module Util
         end
 
         score.add
-       # @text.text = "Score: #{score}"
     end
 
     #returns true if the shape is out of bounds
@@ -54,7 +53,6 @@ module Util
         shape.get_shape.each do |block|
             if block.getX >= Constant::NumOfBlocksX or block.getX < 0 or
                 block.getY >= Constant::NumOfBlocksY or block.getY < 0 
-                puts block.getX 
                 return true
             end
         end

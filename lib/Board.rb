@@ -10,7 +10,10 @@ class Board
         @game_lost = false
         @should_fall = true
         @score = 0
+
         @score_text = Text.new("Score: #{@score}", x:10, y:10, size:40, z:10, color:"white")
+        @gameover_text = Text.new("Gameover", x: 40, y: Constant::Height/2 - 50, size: 100, color: 'red', z:100)
+        @gameover_text.remove
 
         @time = 0
 
@@ -92,11 +95,15 @@ class Board
                 add_shape @cur_shape
 
                 @score += clear_line
+                @score_text.text = "Score: #{@score}"
             end
 
             Util.draw(@board, @score_text)
 
             @time += 1
+
+        else
+            @gameover_text.add
         end
     end
 
@@ -178,7 +185,6 @@ class Board
 
             if flag
                 score += 100
-                @score_text.text = "Score: #{score}"
                 @board.delete_at(i)
                 @board.unshift(Array.new(Constant::NumOfBlocksX, 0))
             end

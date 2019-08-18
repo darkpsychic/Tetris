@@ -7,7 +7,7 @@ require_relative 'lib/Constant/Constant'
 require_relative 'lib/Board'
 
 
-set width: Constant::Width, height: Constant::Height
+set title: "Tetris", width: Constant::Width, height: Constant::Height
 
 board = Board.new
 
