@@ -32,7 +32,6 @@ class Zed < Shape
     end
 
     def rotate_reverse
-        @rotation_state -=1
         rotate
     end
 

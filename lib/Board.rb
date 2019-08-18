@@ -6,7 +6,7 @@ class Board
     def initialize()
         # stores the value of each position in a 2d array
         # value is a number in the range [0, 6]
-        @board = Array.new(Constant::NumOfBlocksX) {Array.new(Constant::NumOfBlocksY, 0)}
+        @board = Array.new(Constant::NumOfBlocksY) {Array.new(Constant::NumOfBlocksX, 0)}
 
         @game_lost = false
         @should_fall = true
@@ -86,7 +86,7 @@ class Board
 
             add_shape @cur_shape
 
-            clear_line
+            @score += clear_line
         end
 
         Util.draw(@board)
@@ -128,7 +128,7 @@ class Board
     # checks for collision of the given shape with blocks on the board
     def colliding?(shape)
         shape.get_shape.each do |cur_block|
-            if @board[cur_block.getX][cur_block.getY] != 0
+            if @board[cur_block.getY][cur_block.getX] != 0
                 return true
             end
         end
@@ -147,13 +147,13 @@ class Board
 
     def remove_shape(shape)
         shape.get_shape.each do |block|
-            @board[block.getX][block.getY] = 0
+            @board[block.getY][block.getX] = 0
         end
     end
 
     def add_shape(shape)
         shape.get_shape.each do |block|
-            @board[block.getX][block.getY] = shape.get_symbol
+            @board[block.getY][block.getX] = shape.get_symbol
         end 
     end
 
@@ -184,17 +184,10 @@ class Board
     private
 
     def remove_line(i)
+        puts "HELL"
         (i-1).downto(0) do |row|
             for col in 0..Constant::NumOfBlocksX
-                flag = true
-                for block in @cur_shape.get_shape
-                    if block.getX == col and block.getY == row
-                        flag = false
-                        break
-                    end
-                end
-
-                if flag and @board[row][col] != 0
+                if @board[row][col] != 0
                     @board[row+1][col] = @board[row][col]
                     @board[row][col] = 0
                 end

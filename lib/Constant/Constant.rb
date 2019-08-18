@@ -12,12 +12,12 @@ module Constant
     NumOfBlocksX = ((Width + LineSize) / (BlockSize + LineSize)).round
     NumOfBlocksY = ((Height + LineSize) / (BlockSize + LineSize)).round
 
-    BoxColor =  [0, 0, 1, 0.5]      #Blue
-    JedColor =  [0, 0.6, 0.4, 0.5]  #Jade
-    LedColor =  [0.9, 0.9, 1, 0.5]  #Lavender
-    StickColor = [0, 0.1, 0.4, 0.5] #Sapphire
-    TeeColor =  [0, 0.5, 0.5, 0.5]  #Teal
-    ZedColor = [0.8, 0.7, 0.1, 0.5] #Zutem
+    BoxColor =  [0, 0, 1, 1]      #Blue
+    JedColor =  [0, 0.6, 0.4, 1]  #Jade
+    LedColor =  [0.9, 0.9, 1, 1]  #Lavender
+    StickColor = [0, 0.1, 0.4, 1] #Sapphire
+    TeeColor =  [0, 0.5, 0.5, 1]  #Teal
+    ZedColor = [0.8, 0.7, 0.1, 1] #Zutem
 
     FPS = 60
 end

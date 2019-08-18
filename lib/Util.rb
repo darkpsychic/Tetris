@@ -21,11 +21,11 @@ module Util
 
         draw_lines
 
-        for r in 0..Constant::NumOfBlocksX-1 do
-            for c in 0..Constant::NumOfBlocksY-1 do
+        for r in 0..Constant::NumOfBlocksY-1 do
+            for c in 0..Constant::NumOfBlocksX-1 do
                 cur_elem = board[r][c]
 
-                cur_block = Square.new(x: r*Constant::BlockSize, y: c*Constant::BlockSize, size: Constant::BlockSize, z: -1)
+                cur_block = Square.new(x: c*Constant::BlockSize, y: r*Constant::BlockSize, size: Constant::BlockSize, z: -1)
                 case cur_elem
                     when :Box 
                         cur_block.color = Constant::BoxColor
@@ -57,10 +57,5 @@ module Util
         end
 
         return false;
-    end
-
-    # returns true if there is a filled line
-    def clear_line?(board)
-        
     end
 end
