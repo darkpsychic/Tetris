@@ -18,4 +18,6 @@ module Constant
     StickColor = [0, 0.1, 0.4, 0.5] #Sapphire
     TeeColor =  [0, 0.5, 0.5, 0.5]  #Teal
     ZedColor = [0.8, 0.7, 0.1, 0.5] #Zutem
+
+    FPS = 60
 end

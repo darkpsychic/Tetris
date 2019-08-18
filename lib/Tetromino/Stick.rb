@@ -32,6 +32,11 @@ class Stick < Shape
         @rotation_state += 1
     end
 
+    def rotate_reverse
+        @rotation_state -= 1
+        rotate
+    end
+
     private 
 
     def rotate_top 

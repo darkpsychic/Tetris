@@ -13,8 +13,8 @@ board = Board.new
 
 tick = 0
 update do
-    if Window.fps > 60
-        sleep ((Window.fps-60.0) / 1000.0)
+    if Window.fps > Constant::FPS
+        sleep ((Window.fps-Constant::FPS.to_f) / 1000.0)
     end
     board.run
 end

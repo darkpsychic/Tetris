@@ -58,4 +58,9 @@ module Util
 
         return false;
     end
+
+    # returns true if there is a filled line
+    def clear_line?(board)
+        
+    end
 end

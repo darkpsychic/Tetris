@@ -14,10 +14,24 @@ class Board
 
         @time = 0
 
+        @CUR_FPS = Constant::FPS
+
         init_input
     end
 
     def init_input 
+        Window.on :key_held do |event|
+            if event.key == "down"
+                @CUR_FPS = Constant::FPS / 8
+            end
+        end
+
+        Window.on :key_up do |event|
+            if event.key == "down"
+                @CUR_FPS = Constant::FPS
+            end
+        end
+
         Window.on :key_down do |event|
             if event.key == "left"
                 remove_shape @cur_shape
@@ -38,12 +52,22 @@ class Board
                 end
 
                 add_shape @cur_shape
+
+            elsif event.key == "up"
+                remove_shape @cur_shape
+                @cur_shape.rotate
+
+                if Util.out_of_bounds?(@cur_shape) or colliding?(@cur_shape)
+                    @cur_shape.rotate_reverse
+                end
+
+                add_shape @cur_shape
             end
         end
     end
 
     def run()
-        if @time % 60 == 0
+        if @time % @CUR_FPS == 0
             @time = 0
             
             if @should_fall 
@@ -61,6 +85,8 @@ class Board
             end
 
             add_shape @cur_shape
+
+            clear_line
         end
 
         Util.draw(@board)
@@ -129,5 +155,50 @@ class Board
         shape.get_shape.each do |block|
             @board[block.getX][block.getY] = shape.get_symbol
         end 
+    end
+
+    # returns the score to be added and removes filled lines
+    def clear_line()
+        score = 0
+        i = 0
+        for row in @board
+            flag = true
+            for elem in row
+                if elem == 0
+                    flag = false
+                    break
+                end
+            end
+
+            if flag
+                score += 100
+                remove_line(i)
+            end
+
+            i += 1
+        end
+
+        return score
+    end
+
+    private
+
+    def remove_line(i)
+        (i-1).downto(0) do |row|
+            for col in 0..Constant::NumOfBlocksX
+                flag = true
+                for block in @cur_shape.get_shape
+                    if block.getX == col and block.getY == row
+                        flag = false
+                        break
+                    end
+                end
+
+                if flag and @board[row][col] != 0
+                    @board[row+1][col] = @board[row][col]
+                    @board[row][col] = 0
+                end
+            end
+        end
     end
 end

@@ -26,4 +26,8 @@ class Box < Shape
         @block_arr[2].set(@x, @y+1)
         @block_arr[3].set(@x+1, @y+1)
     end
+
+    def rotate_reverse
+        #don't do anything
+    end
 end
