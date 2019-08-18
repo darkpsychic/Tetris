@@ -12,7 +12,7 @@ class Board
         @score = 0
 
         @score_text = Text.new("Score: #{@score}", x:10, y:10, size:40, z:10, color:"white")
-        @gameover_text = Text.new("Gameover", x: 40, y: Constant::Height/2 - 50, size: 100, color: 'red', z:100)
+        @gameover_text = Text.new("Gameover", x: 50, y: Constant::Height/2 - 50, size: 100, color: 'red', z:100)
         @gameover_text.remove
 
         @time = 0
@@ -90,12 +90,14 @@ class Board
                     p @board
                     @cur_shape.move_up
                     @should_fall = true
+
+                    add_shape @cur_shape
+
+                    @score += clear_line
+                    @score_text.text = "Score: #{@score}"
                 end
 
                 add_shape @cur_shape
-
-                @score += clear_line
-                @score_text.text = "Score: #{@score}"
             end
 
             Util.draw(@board, @score_text)
