@@ -6,13 +6,40 @@ class Board
     def initialize()
         # stores the value of each position in a 2d array
         # value is a number in the range [0, 6]
-        @board = Array.new(Constant::NumOfBlocksY) {Array.new(Constant::NumOfBlocksX, 0)}
+        @board = Array.new(Constant::NumOfBlocksX) {Array.new(Constant::NumOfBlocksY, 0)}
 
         @game_lost = false
         @should_fall = true
         @score = 0
 
         @time = 0
+
+        init_input
+    end
+
+    def init_input 
+        Window.on :key_down do |event|
+            if event.key == "left"
+                remove_shape @cur_shape
+                @cur_shape.move_left
+
+                if Util.out_of_bounds? @cur_shape or colliding?(@cur_shape)
+                    @cur_shape.move_right 
+                end
+
+                add_shape @cur_shape
+
+            elsif event.key == "right"
+                remove_shape @cur_shape
+                @cur_shape.move_right
+
+                if Util.out_of_bounds? @cur_shape or colliding?(@cur_shape)
+                    @cur_shape.move_left
+                end
+
+                add_shape @cur_shape
+            end
+        end
     end
 
     def run()
@@ -24,33 +51,11 @@ class Board
                 @should_fall = false;
             end
 
-            Window.on :key_down do |event|
-                if event.key == "left"
-                    remove_shape @cur_shape
-                    @cur_shape.move_left
-
-                    if Util.out_of_bounds? @cur_shape
-                        @cur_shape.move_right 
-                    end
-
-                    add_shape @cur_shape
-
-                elsif event.key == "right"
-                    remove_shape @cur_shape
-                    @cur_shape.move_right
-
-                    if Util.out_of_bounds? @cur_shape
-                        @cur_shape.move_left
-                    end
-
-                    add_shape @cur_shape
-                end
-            end
-
             remove_shape @cur_shape
             @cur_shape.move_down
 
-            if Util.out_of_bounds? @cur_shape
+            if Util.out_of_bounds? @cur_shape or colliding?(@cur_shape)
+                p @board
                 @cur_shape.move_up
                 @should_fall = true
             end

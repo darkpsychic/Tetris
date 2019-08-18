@@ -51,6 +51,7 @@ module Util
         shape.get_shape.each do |block|
             if block.getX >= Constant::NumOfBlocksX or block.getX < 0 or
                 block.getY >= Constant::NumOfBlocksY or block.getY < 0 
+                puts block.getX 
                 return true
             end
         end
