@@ -40,35 +40,37 @@ class Board
         end
 
         Window.on :key_down do |event|
-            if event.key == "left"
-                remove_shape @cur_shape
-                @cur_shape.move_left
-
-                if Util.out_of_bounds? @cur_shape or colliding?(@cur_shape)
-                    @cur_shape.move_right 
-                end
-
-                add_shape @cur_shape
-
-            elsif event.key == "right"
-                remove_shape @cur_shape
-                @cur_shape.move_right
-
-                if Util.out_of_bounds? @cur_shape or colliding?(@cur_shape)
+            if @cur_shape.is_a?(Shape) 
+                if event.key == "left"
+                    remove_shape @cur_shape
                     @cur_shape.move_left
+
+                    if Util.out_of_bounds? @cur_shape or colliding?(@cur_shape)
+                        @cur_shape.move_right 
+                    end
+
+                    add_shape @cur_shape
+
+                elsif event.key == "right"
+                    remove_shape @cur_shape
+                    @cur_shape.move_right
+
+                    if Util.out_of_bounds? @cur_shape or colliding?(@cur_shape)
+                        @cur_shape.move_left
+                    end
+
+                    add_shape @cur_shape
+
+                elsif event.key == "up"
+                    remove_shape @cur_shape
+                    @cur_shape.rotate
+
+                    if Util.out_of_bounds?(@cur_shape) or colliding?(@cur_shape)
+                        @cur_shape.rotate_reverse
+                    end
+
+                    add_shape @cur_shape
                 end
-
-                add_shape @cur_shape
-
-            elsif event.key == "up"
-                remove_shape @cur_shape
-                @cur_shape.rotate
-
-                if Util.out_of_bounds?(@cur_shape) or colliding?(@cur_shape)
-                    @cur_shape.rotate_reverse
-                end
-
-                add_shape @cur_shape
             end
         end
     end
@@ -87,17 +89,18 @@ class Board
                 @cur_shape.move_down
 
                 if Util.out_of_bounds? @cur_shape or colliding?(@cur_shape)
-                    p @board
                     @cur_shape.move_up
                     @should_fall = true
 
                     add_shape @cur_shape
 
+                    @cur_shape = 0
+
                     @score += clear_line
                     @score_text.text = "Score: #{@score}"
+                else
+                    add_shape @cur_shape
                 end
-
-                add_shape @cur_shape
             end
 
             Util.draw(@board, @score_text)
