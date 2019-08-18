@@ -11,8 +11,8 @@ set width: Constant::Width, height: Constant::Height
 
 board = Board.new
 
-tick = 0
 update do
+    
     if Window.fps > Constant::FPS
         sleep ((Window.fps-Constant::FPS.to_f) / 1000.0)
     end

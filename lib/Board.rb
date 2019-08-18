@@ -5,18 +5,22 @@ require_relative "Tetromino/Tetromino"
 class Board 
     def initialize()
         # stores the value of each position in a 2d array
-        # value is a number in the range [0, 6]
         @board = Array.new(Constant::NumOfBlocksY) {Array.new(Constant::NumOfBlocksX, 0)}
 
         @game_lost = false
         @should_fall = true
         @score = 0
+        @score_text = Text.new("Score: #{@score}", x:10, y:10, size:40, z:10, color:"white")
 
         @time = 0
 
         @CUR_FPS = Constant::FPS
 
         init_input
+    end
+
+    def get_score
+        @score
     end
 
     def init_input 
@@ -90,7 +94,7 @@ class Board
                 @score += clear_line
             end
 
-            Util.draw(@board)
+            Util.draw(@board, @score_text)
 
             @time += 1
         end
@@ -174,6 +178,7 @@ class Board
 
             if flag
                 score += 100
+                @score_text.text = "Score: #{score}"
                 @board.delete_at(i)
                 @board.unshift(Array.new(Constant::NumOfBlocksX, 0))
             end

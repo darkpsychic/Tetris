@@ -16,7 +16,7 @@ module Util
         end
     end
 
-    def draw(board)
+    def draw(board, score)
         Window.clear
 
         draw_lines
@@ -44,6 +44,9 @@ module Util
                 end
             end
         end
+
+        score.add
+       # @text.text = "Score: #{score}"
     end
 
     #returns true if the shape is out of bounds

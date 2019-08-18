@@ -33,7 +33,7 @@ class Led < Shape
         @rotation_state %= @num_of_rotations
     end
 
-    def rotation_reverse
+    def rotate_reverse
         @rotation_state -= 1
         rotate
     end
