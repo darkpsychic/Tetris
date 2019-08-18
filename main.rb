@@ -11,7 +11,6 @@ set width: Constant::Width, height: Constant::Height
 
 board = Board.new
 
-t = board.drop
 tick = 0
 update do
     if Window.fps > 60

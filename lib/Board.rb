@@ -18,11 +18,48 @@ class Board
     def run()
         if @time % 60 == 0
             @time = 0
-            puts "Hell"
+            
+            if @should_fall 
+                drop
+                @should_fall = false;
+            end
+
+            Window.on :key_down do |event|
+                if event.key == "left"
+                    remove_shape @cur_shape
+                    @cur_shape.move_left
+
+                    if Util.out_of_bounds? @cur_shape
+                        @cur_shape.move_right 
+                    end
+
+                    add_shape @cur_shape
+
+                elsif event.key == "right"
+                    remove_shape @cur_shape
+                    @cur_shape.move_right
+
+                    if Util.out_of_bounds? @cur_shape
+                        @cur_shape.move_left
+                    end
+
+                    add_shape @cur_shape
+                end
+            end
+
+            remove_shape @cur_shape
+            @cur_shape.move_down
+
+            if Util.out_of_bounds? @cur_shape
+                @cur_shape.move_up
+                @should_fall = true
+            end
+
+            add_shape @cur_shape
         end
+
         Util.draw(@board)
 
-        #puts @time
         @time += 1
     end
 
@@ -37,40 +74,30 @@ class Board
         midY = 0
         case random_number
             when 1
-                @cur_shape_symbol = :Box
                 @cur_shape = Box.new(x: midX, y: midY)
             when 2
-                @cur_shape_symbol = :Jed
                 @cur_shape = Jed.new(x: midX, y: midY)
             when 3
-                @cur_shape_symbol = :Led
                 @cur_shape = Led.new(x: midX, y: midY)
             when 4
-                @cur_shape_symbol = :Stick
                 @cur_shape = Stick.new(x: midX, y: midY)
             when 5
-                @cur_shape_symbol = :Tee
                 @cur_shape = Tee.new(x: midX, y: midY)
             when 6
-                @cur_shape_symbol = :Zed
                 @cur_shape = Zed.new(x: midX, y: midY)
         end
 
-        puts @cur_shape_symbol
-
         if !gameover?
-            add_shape(@cur_shape, @cur_shape_symbol)
+            add_shape(@cur_shape)
         else
             @game_lost = true
         end
-
-        @cur_shape
     end
 
     # checks for collision of the given shape with blocks on the board
     def colliding?(shape)
         shape.get_shape.each do |cur_block|
-            if @board[cur_block.getY][cur_block.getX] != 0
+            if @board[cur_block.getX][cur_block.getY] != 0
                 return true
             end
         end
@@ -87,9 +114,15 @@ class Board
         end
     end
 
-    def add_shape(shape, shape_symbol)
+    def remove_shape(shape)
         shape.get_shape.each do |block|
-            @board[block.getX][block.getY] = shape_symbol
+            @board[block.getX][block.getY] = 0
+        end
+    end
+
+    def add_shape(shape)
+        shape.get_shape.each do |block|
+            @board[block.getX][block.getY] = shape.get_symbol
         end 
     end
 end

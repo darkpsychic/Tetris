@@ -13,20 +13,30 @@ class Shape
     end
 
     def move_left() 
+        @x -= 1
         @block_arr.each do |block|
-            @x -= 1
+            block.setX(block.getX - 1)
         end
     end
 
     def move_right() 
+        @x += 1
         @block_arr.each do |block|
-            @x += 1
+            block.setX(block.getX + 1)
         end
     end
 
     def move_down() 
+        @y += 1
         @block_arr.each do |block|
-            @y += 1
+            block.setY(block.getY + 1)
+        end
+    end
+
+    def move_up() 
+        @y -= 1
+        @block_arr.each do |block|
+            block.setY(block.getY - 1)
         end
     end
 

@@ -45,4 +45,16 @@ module Util
             end
         end
     end
+
+    #returns true if the shape is out of bounds
+    def out_of_bounds?(shape)
+        shape.get_shape.each do |block|
+            if block.getX >= Constant::NumOfBlocksX or block.getX < 0 or
+                block.getY >= Constant::NumOfBlocksY or block.getY < 0 
+                return true
+            end
+        end
+
+        return false;
+    end
 end
