@@ -34,7 +34,7 @@ class Shape
         @block_arr
     end
 
-    def get_ymbol()
+    def get_symbol()
         @block_arr[0].getBlockSymbol
     end
 end

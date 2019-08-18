@@ -4,21 +4,6 @@ require_relative 'Constant/Constant'
 module Util
     extend self
 
-    def update(board, cur_shape)
-        Window.on :key_down do |event|
-            if event.key=="up"
-                cur_shape.rotate
-                board.add_shape(cur_shape)
-            elsif event.key=="left"
-                cur_shape.move_left
-                board.add_shape(cur_shape)
-            elsif event.key=="right"
-                cur_shape.move_right
-                board.add_shape(cur_shape)
-            end
-        end
-    end
-
     def draw_lines
         #draw horizontal lines
         for i in 1..Constant::NumOfBlocksY do

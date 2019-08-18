@@ -11,11 +11,19 @@ class Board
         @game_lost = false
         @should_fall = true
         @score = 0
+
+        @time = 0
     end
 
-    def update
-        Util.update(@board, @cur_shape)
+    def run()
+        if @time % 60 == 0
+            @time = 0
+            puts "Hell"
+        end
         Util.draw(@board)
+
+        #puts @time
+        @time += 1
     end
 
     # generates a random block at the top of the screen

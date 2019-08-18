@@ -35,7 +35,7 @@ class Block
         @y = y 
     end 
 
-    def setBlockSymbol(block_symbol: :none) 
+    def setBlockSymbol(block_symbol) 
         @block_symbol = block_symbol 
     end
 end

@@ -14,7 +14,10 @@ board = Board.new
 t = board.drop
 tick = 0
 update do
-    board.update
+    if Window.fps > 60
+        sleep (Window.fps-60)
+    end
+    board.run
 end
 
 show
