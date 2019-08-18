@@ -67,31 +67,33 @@ class Board
     end
 
     def run()
-        if @time % @CUR_FPS == 0
-            @time = 0
-            
-            if @should_fall 
-                drop
-                @should_fall = false;
+        if !@game_lost
+            if @time % @CUR_FPS == 0
+                @time = 0
+                
+                if @should_fall 
+                    drop
+                    @should_fall = false;
+                end
+
+                remove_shape @cur_shape
+                @cur_shape.move_down
+
+                if Util.out_of_bounds? @cur_shape or colliding?(@cur_shape)
+                    p @board
+                    @cur_shape.move_up
+                    @should_fall = true
+                end
+
+                add_shape @cur_shape
+
+                @score += clear_line
             end
 
-            remove_shape @cur_shape
-            @cur_shape.move_down
+            Util.draw(@board)
 
-            if Util.out_of_bounds? @cur_shape or colliding?(@cur_shape)
-                p @board
-                @cur_shape.move_up
-                @should_fall = true
-            end
-
-            add_shape @cur_shape
-
-            @score += clear_line
+            @time += 1
         end
-
-        Util.draw(@board)
-
-        @time += 1
     end
 
     # generates a random block at the top of the screen
@@ -172,26 +174,13 @@ class Board
 
             if flag
                 score += 100
-                remove_line(i)
+                @board.delete_at(i)
+                @board.unshift(Array.new(Constant::NumOfBlocksX, 0))
             end
 
             i += 1
         end
 
         return score
-    end
-
-    private
-
-    def remove_line(i)
-        puts "HELL"
-        (i-1).downto(0) do |row|
-            for col in 0..Constant::NumOfBlocksX
-                if @board[row][col] != 0
-                    @board[row+1][col] = @board[row][col]
-                    @board[row][col] = 0
-                end
-            end
-        end
     end
 end
